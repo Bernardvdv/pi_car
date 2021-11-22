@@ -103,7 +103,8 @@
                     }
                 });
                 $(window).on('keyup',function(e){clearInterval(interval)});
-                $('.upbtn').on('mousedown','button',function(e){
+//                 $('.upbtn').on('mousedown','button',function(e){
+                $(".upbtn" ).click(function(e) {
                     console.log('up pressed')
                    e.preventDefault();
                    clearInterval(interval);
