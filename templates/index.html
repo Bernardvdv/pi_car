@@ -17,17 +17,18 @@
             </div>
             
              <div class="buttons">
-                <button type="button" class="btn btn-primary upbtn" data-action="tilt:-1">Up</button>
-                <button type="button" class="btn btn-primary downbtn" data-action="tilt:+1">Down</button>
-                <button type="button" class="btn btn-primary leftbtn" data-action="pan:-1">Left</button>
-                <button type="button" class="btn btn-primary rightbtn" data-action="pan:+1">Right</button>
-            </div>
+                 <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                      <div class="btn-group btn-group-lg" role="group" aria-label="First group">
+                        <button type="button" class="btn btn-secondary upbtn" data-action="tilt:-1">Up</button>
+                        <button type="button" class="btn btn-secondary downbtn" data-action="tilt:+1">Down</button>
+                        <button type="button" class="btn btn-secondary leftbtn" data-action="pan:-1">Left</button>
+                        <button type="button" class="btn btn-secondary rightbtn" data-action="pan:+1">Right</button>
+                      </div>
+                </div>
+             </div>
         </div>
         
-        
-        <div class="container">
-           
-        </div>
+      
 
         <script
             src="https://code.jquery.com/jquery-3.1.1.min.js"
@@ -75,8 +76,6 @@
                 $('.buttons').on('mousedown','button',function(e){
                    e.preventDefault();
                    clearInterval(interval);
-
-//                    var obj = $(this);
                    var action = $(this).data('action');
                    current_direction = action.split(':')[0];
                    current_angle = parseInt(action.split(':')[1]);
