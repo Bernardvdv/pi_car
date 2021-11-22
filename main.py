@@ -71,6 +71,7 @@ def light():
     pantilthat.show()
 #     print(a)
 #     time.sleep(0.04)
+    return render_template('gui.html') #you can customze index.html here
 
 if __name__ == '__main__':
 
