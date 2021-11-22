@@ -25,7 +25,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('gui.html') #you can customze index.html here
+    return render_template('index.html') #you can customze index.html here
 
 def gen(camera):
     #get camera frame
@@ -56,22 +56,33 @@ def api(direction, angle):
 
     return "{'error':'invalid direction'}"
 
-@app.route('/neo')
-def light():
+@app.route('/rgb')
+def rgb():
 #     while True:
     t = time.time()
     b = (math.sin(t * 2) + 1) / 2
     b = int(b * 255.0)
     t = round(time.time() * 1000) / 1000
-    a = round(math.sin(t) * 90)
-#         pantilthat.pan(int(a))
-#         pantilthat.tilt(int(a))
     r, g, b = [int(x*255) for x in  colorsys.hsv_to_rgb(((t*100) % 360) / 360.0, 1.0, 1.0)]
     pantilthat.set_all(r, g, b)
     pantilthat.show()
-#     print(a)
-#     time.sleep(0.04)
-    return render_template('gui.html') #you can customze index.html here
+    return render_template('index.html')
+
+@app.route('/white')
+def white():
+    pantilthat.light_mode(pantilthat.WS2812)
+    pantilthat.light_type(pantilthat.GRBW)
+    pantilthat.set_all(0, 0, 0, 255)
+    pantilthat.show()
+    return render_template('index.html')
+
+@app.route('/off')
+def off():
+    pantilthat.light_mode(pantilthat.WS2812)
+    pantilthat.light_type(pantilthat.GRBW)
+    pantilthat.clear()
+    pantilthat.show()
+    return render_template('index.html')
 
 if __name__ == '__main__':
 
