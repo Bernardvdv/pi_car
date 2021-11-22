@@ -19,7 +19,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html') #you can customze index.html here
+    return render_template('gui.html') #you can customze index.html here
 
 def gen(camera):
     #get camera frame
