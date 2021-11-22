@@ -69,22 +69,22 @@
                     clearInterval(interval);
 
                     switch(e.keyCode){
-                        case 38: // Arrow Up
+                        case 40: // Arrow Up
                             current_direction = 'tilt';
                             current_angle = 1;
                             interval = setInterval(pantilt,pantilt_speed);
                             break;
-                        case 40: // Arrow Down
+                        case 38: // Arrow Down
                             current_direction = 'tilt';
                             current_angle = -1;
                             interval = setInterval(pantilt,pantilt_speed);
                             break;
-                        case 37: // Arrow Left
+                        case 39: // Arrow Left
                             current_direction = 'pan';
                             current_angle = 1;
                             interval = setInterval(pantilt,pantilt_speed);
                             break;
-                        case 39: // Arrow Right
+                        case 37: // Arrow Right
                             current_direction = 'pan';
                             current_angle = -1;
                             interval = setInterval(pantilt,pantilt_speed);
