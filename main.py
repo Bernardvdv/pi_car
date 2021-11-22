@@ -72,6 +72,7 @@ def rgb():
 def white():
     pantilthat.light_mode(pantilthat.WS2812)
     pantilthat.light_type(pantilthat.GRBW)
+    pantilthat.clear()
     pantilthat.set_all(0, 0, 0, 255)
     pantilthat.show()
     return render_template('index.html')
