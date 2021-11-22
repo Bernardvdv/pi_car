@@ -19,8 +19,35 @@
       <div class="main" id="newpost">
         <img  class="camera-bg" style="width: 50%; height:50%; background-attachment: fixed;" id="bg" class="center" src="{{ url_for('video_feed') }}">
         <!--<img  class="camera-bg" style="width: 100%; height:80%; background-attachment: fixed;" id="bg" class="center" src="https://www.psdbox.com/wp-content/uploads/2011/01/security-camera-photoshop-effect.jpg">-->
-
       </div>
+      <br>
+       <div class="container">
+      	  <hr>
+          <h4> PAN:  
+            <a href="/pan/30"class="button">30</a>
+            <a href="/pan/45"class="button">45</a>
+            <a href="/pan/60"class="button">60</a>
+            <a href="/pan/75"class="button">75</a>
+            <a href="/pan/90"class="button">90</a>
+            <a href="/pan/105"class="button">105</a>
+            <a href="/pan/120"class="button">120</a>
+            <a href="/pan/135"class="button">135</a>
+            <a href="/pan/150"class="button">150</a>
+            ==> Angle: [ {{ panServoAngle }} ]
+          </h4>
+            <h4> TILT: 
+            <a href="/tilt/30"class="button">30</a>
+            <a href="/tilt/45"class="button">45</a>		
+            <a href="/tilt/60"class="button">60</a>
+            <a href="/tilt/75"class="button">75</a>		
+            <a href="/tilt/90"class="button">90</a>
+            <a href="/tilt/105"class="button">105</a>		
+            <a href="/tilt/120"class="button">120</a>
+            <a href="/tilt/135"class="button">135</a>		
+            <a href="/tilt/150"class="button">150</a>
+            ==> Angle: [ {{ tiltServoAngle }} ]
+          </h4>
+	        <hr>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
