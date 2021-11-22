@@ -145,21 +145,29 @@
             });
         </script>
         <script>
-            $(".btn" ).click(function(e) {
-                var angle = 0;
-                
-                var obj = $(this);
-                var action = obj.data('action');
-                console.log(action)
-                current_direction = action.split(':')[0];
-                current_angle = parseInt(action.split(':')[1]);
+            $('.up').on('mousedown','button',function(e){
+            console.log('up pressed')
+               e.preventDefault();
+               clearInterval(interval);
 
-               if(current_direction == 'pan'){
-                   current_pan += current_angle;
-                   if(current_pan < 0) current_pan = 0;
-                   if(current_pan > 180) current_pan = 180;
-                   angle = current_pan;
-               }
+               var obj = $(this);
+               var action = obj.data('action');
+                console.log(action)
+               current_direction = action.split(':')[0];
+               current_angle = parseInt(action.split(':')[1]);
+
+                interval = setInterval(pantilt,pantilt_speed);
+                })
+                .on('mouseup','li',function(e){
+                   clearInterval(interval);
+                });
+            
+                if(current_direction == 'pan'){
+                       current_pan += current_angle;
+                       if(current_pan < 0) current_pan = 0;
+                       if(current_pan > 180) current_pan = 180;
+                       angle = current_pan;
+                }
 
                if(current_direction == 'tilt'){
                    current_tilt += current_angle;
@@ -168,7 +176,7 @@
                    angle = current_tilt;
                }
 
-               $.get('/api/' + current_direction + '/' + angle); 
+                $.get('/api/' + current_direction + '/' + angle); 
             })
         </script>
     </body>
