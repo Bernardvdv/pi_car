@@ -20,35 +20,17 @@
         <img  class="camera-bg" style="width: 50%; height:50%; background-attachment: fixed;" id="bg" class="center" src="{{ url_for('video_feed') }}">
         <!--<img  class="camera-bg" style="width: 100%; height:80%; background-attachment: fixed;" id="bg" class="center" src="https://www.psdbox.com/wp-content/uploads/2011/01/security-camera-photoshop-effect.jpg">-->
       </div>
-      <br>
-       <div class="container">
-      	  <hr>
-          <h4> PAN:  
-            <a href="/pan/30"class="button">30</a>
-            <a href="/pan/45"class="button">45</a>
-            <a href="/pan/60"class="button">60</a>
-            <a href="/pan/75"class="button">75</a>
-            <a href="/pan/90"class="button">90</a>
-            <a href="/pan/105"class="button">105</a>
-            <a href="/pan/120"class="button">120</a>
-            <a href="/pan/135"class="button">135</a>
-            <a href="/pan/150"class="button">150</a>
-            ==> Angle: [ {{ panServoAngle }} ]
-          </h4>
-            <h4> TILT: 
-            <a href="/tilt/30"class="button">30</a>
-            <a href="/tilt/45"class="button">45</a>		
-            <a href="/tilt/60"class="button">60</a>
-            <a href="/tilt/75"class="button">75</a>		
-            <a href="/tilt/90"class="button">90</a>
-            <a href="/tilt/105"class="button">105</a>		
-            <a href="/tilt/120"class="button">120</a>
-            <a href="/tilt/135"class="button">135</a>		
-            <a href="/tilt/150"class="button">150</a>
-            ==> Angle: [ {{ tiltServoAngle }} ]
-          </h4>
-	        <hr>
     </div>
+	  
+	  <br>
+	  <div class="main">
+            <ul>
+                <li class="up" data-action="tilt:-1">Up</li>
+                <li class="down" data-action="tilt:+1">Down</li>
+                <li class="left" data-action="pan:+1">Left</li>
+                <li class="right" data-action="pan:-1">Right</li>
+            </ul>
+        </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
     
@@ -65,5 +47,79 @@
         }
     };
     </script>
+	  
+	          <script type="text/javascript">
+            var current_pan = 90;
+            var current_tilt = 90;
+            var pantilt_speed = 60; // Delay between increments in ms
+
+            var interval = null;
+            var current_direction = null;
+            var current_angle = null;
+
+            $(function(){
+                $(window).on('keydown',function(e){
+                    clearInterval(interval);
+
+                    switch(e.keyCode){
+                        case 38: // Arrow Up
+                            current_direction = 'tilt';
+                            current_angle = 1;
+                            interval = setInterval(pantilt,pantilt_speed);
+                            break;
+                        case 40: // Arrow Down
+                            current_direction = 'tilt';
+                            current_angle = -1;
+                            interval = setInterval(pantilt,pantilt_speed);
+                            break;
+                        case 37: // Arrow Left
+                            current_direction = 'pan';
+                            current_angle = 1;
+                            interval = setInterval(pantilt,pantilt_speed);
+                            break;
+                        case 39: // Arrow Right
+                            current_direction = 'pan';
+                            current_angle = -1;
+                            interval = setInterval(pantilt,pantilt_speed);
+                            break;
+                    }
+                });
+                $(window).on('keyup',function(e){clearInterval(interval)});
+                $('.main').on('mousedown','li',function(e){
+                   e.preventDefault();
+                   clearInterval(interval);
+
+                   var obj = $(this);
+                   var action = obj.data('action');
+                   current_direction = action.split(':')[0];
+                   current_angle = parseInt(action.split(':')[1]);
+
+                   interval = setInterval(pantilt,pantilt_speed);
+               })
+               .on('mouseup','li',function(e){
+                   clearInterval(interval);
+               });
+
+               function pantilt(){
+                   var angle = 0;
+
+                   if(current_direction == 'pan'){
+                       current_pan += current_angle;
+                       if(current_pan < 0) current_pan = 0;
+                       if(current_pan > 180) current_pan = 180;
+                       angle = current_pan;
+                   }
+
+                   if(current_direction == 'tilt'){
+                       current_tilt += current_angle;
+                       if(current_tilt < 0) current_tilt = 0;
+                       if(current_tilt > 180) current_tilt = 180;
+                       angle = current_tilt;
+                   }
+
+                   $.get('/api/' + current_direction + '/' + angle); 
+                }
+            });
+        </script>
   </body>
 </html>
