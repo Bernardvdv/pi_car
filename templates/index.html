@@ -139,8 +139,15 @@
                        if(current_tilt > 180) current_tilt = 180;
                        angle = current_tilt;
                    }
-
-                   $.get('/api/' + current_direction + '/' + angle); 
+                    $.ajax({
+                       type: "GET",
+//                        dataType: "json",
+                       url: "/api/" + current_direction + '/' + angle,
+                       success: function (geo_data) {
+                           console.log(geo_data);
+                       }
+                    });
+//                            $.get('/api/' + current_direction + '/' + angle); 
                 }
             });
         </script>
