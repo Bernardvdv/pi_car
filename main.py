@@ -9,6 +9,9 @@ import time
 import threading
 import os
 
+import pantilthat
+from sys import exit
+
 pi_camera = VideoCamera(flip=True) # flip pi camera if upside down.
 
 # App Globals (do not edit)
@@ -30,23 +33,22 @@ def video_feed():
     return Response(gen(pi_camera),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
 
-# @app.route("/<servo>/<angle>")
-# def move(servo, angle):
-# 	global panServoAngle
-# 	global tiltServoAngle
-# 	if servo == 'pan':
-# 		panServoAngle = int(angle)
-# 		os.system("python3 angleServoCtrl.py " + str(panPin) + " " + str(panServoAngle))
-# 	if servo == 'tilt':
-# 		tiltServoAngle = int(angle)
-# 		os.system("python3 angleServoCtrl.py " + str(tiltPin) + " " + str(tiltServoAngle))
-	
-# 	templateData = {
-#       'panServoAngle'	: panServoAngle,
-#       'tiltServoAngle'	: tiltServoAngle
-# 	}
+@app.route('/api/<direction>/<int:angle>')
+def api(direction, angle):
+    if angle < 0 or angle > 180:
+        return "{'error':'out of range'}"
 
-# 	return render_template('index.html', **templateData)
+    angle -= 90
+
+    if direction == 'pan':
+        pantilthat.pan(angle)
+        return "{{'pan':{}}}".format(angle)
+
+    elif direction == 'tilt':
+        pantilthat.tilt(angle)
+        return "{{'tilt':{}}}".format(angle)
+
+    return "{'error':'invalid direction'}"
 
 if __name__ == '__main__':
 
