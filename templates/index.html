@@ -57,7 +57,7 @@
         
         <div class="container">
             <div class="main">
-                
+                <button type="button" class="btn btn-primary upbtn" data-action="tilt:-1">Up</button>
             </div>
         </div>
 
@@ -103,7 +103,7 @@
                     }
                 });
                 $(window).on('keyup',function(e){clearInterval(interval)});
-                $('.main').on('mousedown','li',function(e){
+                $('.upbtn').on('mousedown','button',function(e){
                    e.preventDefault();
                    clearInterval(interval);
 
