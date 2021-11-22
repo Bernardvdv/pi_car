@@ -58,9 +58,9 @@
         <div class="container">
             <div class="main">
                 <button type="button" class="btn btn-primary upbtn" data-action="tilt:-1">Up</button>
-                <button type="button" class="btn btn-primary downbtn" data-action="tilt:+1">Up</button>
-                <button type="button" class="btn btn-primary leftbtn" data-action="pan:-1">Up</button>
-                <button type="button" class="btn btn-primary rightbtn" data-action="pan:+1">Up</button>
+                <button type="button" class="btn btn-primary downbtn" data-action="tilt:+1">Down</button>
+                <button type="button" class="btn btn-primary leftbtn" data-action="pan:-1">Left</button>
+                <button type="button" class="btn btn-primary rightbtn" data-action="pan:+1">Right</button>
             </div>
         </div>
 
@@ -143,41 +143,6 @@
                    $.get('/api/' + current_direction + '/' + angle); 
                 }
             });
-        </script>
-        <script>
-            $('.up').on('mousedown','button',function(e){
-            console.log('up pressed')
-               e.preventDefault();
-               clearInterval(interval);
-
-               var obj = $(this);
-               var action = obj.data('action');
-                console.log(action)
-               current_direction = action.split(':')[0];
-               current_angle = parseInt(action.split(':')[1]);
-
-                interval = setInterval(pantilt,pantilt_speed);
-                })
-                .on('mouseup','li',function(e){
-                   clearInterval(interval);
-                });
-            
-                if(current_direction == 'pan'){
-                       current_pan += current_angle;
-                       if(current_pan < 0) current_pan = 0;
-                       if(current_pan > 180) current_pan = 180;
-                       angle = current_pan;
-                }
-
-               if(current_direction == 'tilt'){
-                   current_tilt += current_angle;
-                   if(current_tilt < 0) current_tilt = 0;
-                   if(current_tilt > 180) current_tilt = 180;
-                   angle = current_tilt;
-               }
-
-                $.get('/api/' + current_direction + '/' + angle); 
-            })
         </script>
     </body>
 </html>
