@@ -6,62 +6,27 @@
         <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        
-        <style type="text/css">
-/*             .buttons {
-                width:220px;
-                height:220px;
-                background:#F0F0F0;
-                position:relative;
-            } */
-/*             .main ul, .main li {
-                list-style:none;
-                margin:0;
-                padding:0;
-            } */
-/*             .buttons button {
-                width:50px;
-                height:50px;
-                border:5px outset #DDDDDD;
-                background:#CCCCCC;
-                position:absolute;
-                cursor:pointer;
-                line-height:50px;
-                text-align:center;
-            } */
-            .buttons .upbtn {left:50%;margin-left:-35px;}
-            .buttons .downbtn {left:50%;bottom:0;margin-left:-35px;}
-            .buttons .leftbtn {top:50%;margin-top:-35px;}
-            .buttons .rightbtn {top:50%;right:0;margin-top:-35px;}
-        </style>
+     
     </head>
     <body>
         <h1>PiCar</h1>
         
         <div class="container">
-            <div class="main" id="newpost">
-                <img  class="camera-bg" style="width: 100%; height:100%; background-attachment: fixed;" id="bg" class="center" src="{{ url_for('video_feed') }}">
+            <div class="camera">
+                <img style="width: 70%; height:70%;"src="{{ url_for('video_feed') }}">
             </div>
-        </div>
-        
-<!--         <div class="container">
-            <div class="main">
-                <ul>
-                    <li class="up" data-action="tilt:-1">Up</li>
-                    <li class="down" data-action="tilt:+1">Down</li>
-                    <li class="left" data-action="pan:-1">Left</li>
-                    <li class="right" data-action="pan:+1">Right</li>
-                </ul>
-            </div>
-        </div> -->
-        
-        <div class="container">
-            <div class="buttons">
+            
+             <div class="buttons">
                 <button type="button" class="btn btn-primary upbtn" data-action="tilt:-1">Up</button>
                 <button type="button" class="btn btn-primary downbtn" data-action="tilt:+1">Down</button>
                 <button type="button" class="btn btn-primary leftbtn" data-action="pan:-1">Left</button>
                 <button type="button" class="btn btn-primary rightbtn" data-action="pan:+1">Right</button>
             </div>
+        </div>
+        
+        
+        <div class="container">
+           
         </div>
 
         <script
