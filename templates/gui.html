@@ -32,15 +32,23 @@
         </style>
     </head>
     <body>
-        <h1>Pan Tilt HAT: Web Interface</h1>
-
-        <div class="main">
-            <ul>
-                <li class="up" data-action="tilt:-1">Up</li>
-                <li class="down" data-action="tilt:+1">Down</li>
-                <li class="left" data-action="pan:+1">Left</li>
-                <li class="right" data-action="pan:-1">Right</li>
-            </ul>
+        <h1>PiCar</h1>
+        
+        <div class="container">
+            <div class="main" id="newpost">
+                <img  class="camera-bg" style="width: 50%; height:50%; background-attachment: fixed;" id="bg" class="center" src="{{ url_for('video_feed') }}">
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="main">
+                <ul>
+                    <li class="up" data-action="tilt:-1">Up</li>
+                    <li class="down" data-action="tilt:+1">Down</li>
+                    <li class="left" data-action="pan:+1">Left</li>
+                    <li class="right" data-action="pan:-1">Right</li>
+                </ul>
+            </div>
         </div>
 
         <script
