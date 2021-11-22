@@ -143,6 +143,8 @@
         </script>
         <script>
             $(".upbtn" ).click(function(e) {
+                current_direction == 'pan'
+                angle = 1
                 $.get('/api/' + current_direction + '/' + angle); 
             })
         </script>
