@@ -28,6 +28,12 @@
                             <button type="button" class="btn btn-secondary rightbtn" data-action="pan:+1">Right</button>
                           </div>
                     </div>
+                    <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
+                          <div class="btn-group btn-group-lg" role="group" aria-label="First group">
+                            <button type="button" class="btn btn-secondary led" data-action="rgb">RGB</button>
+                            <button type="button" class="btn btn-secondary led" data-action="off">Off</button>
+                          </div>
+                    </div>
                  </div>
              </div>
         </div>
@@ -115,5 +121,21 @@
                 }
             });
         </script>
+        <script>
+        $(function() {
+          $('.led').on('click', function(e) {
+             var action = $(this).data('action');
+              alert(action)
+             $.ajax({
+               type: "GET",
+               url: "/" + action + "/",
+               success: function (data) {
+                   console.log(data);
+               }
+            });
+          });
+        });
+        </script>
+            
     </body>
 </html>
