@@ -104,11 +104,13 @@
                 });
                 $(window).on('keyup',function(e){clearInterval(interval)});
                 $('.upbtn').on('mousedown','button',function(e){
+                    console.log('up pressed')
                    e.preventDefault();
                    clearInterval(interval);
 
                    var obj = $(this);
                    var action = obj.data('action');
+                    console.log(action)
                    current_direction = action.split(':')[0];
                    current_angle = parseInt(action.split(':')[1]);
 
