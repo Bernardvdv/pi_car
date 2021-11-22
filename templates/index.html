@@ -103,8 +103,7 @@
                     }
                 });
                 $(window).on('keyup',function(e){clearInterval(interval)});
-//                 $('.upbtn').on('mousedown','button',function(e){
-                $(".upbtn" ).click(function(e) {
+                $('.up').on('mousedown','button',function(e){
                     console.log('up pressed')
                    e.preventDefault();
                    clearInterval(interval);
@@ -141,6 +140,11 @@
                    $.get('/api/' + current_direction + '/' + angle); 
                 }
             });
+        </script>
+        <script>
+            $(".upbtn" ).click(function(e) {
+                $.get('/api/' + current_direction + '/' + angle); 
+            })
         </script>
     </body>
 </html>
