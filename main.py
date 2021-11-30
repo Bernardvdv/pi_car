@@ -93,7 +93,7 @@ def car_forward():
         url = 'http://192.168.1.107/forward'
         x = requests.get(url) 
         return render_template('index.html')
-    exception:
+    except:
         pass
 
 @app.route('/car_backward')
