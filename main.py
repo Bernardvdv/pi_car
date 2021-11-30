@@ -94,19 +94,19 @@ def car_forward():
     return render_template('index.html')
 
 @app.route('/car_stop')
-def car_forward():
+def car_stop():
     url = 'http://192.168.1.107/off'
     x = requests.get(url) 
     return render_template('index.html')
 
 @app.route('/car_left')
-def car_forward():
+def car_left():
     url = 'http://192.168.1.107/left'
     x = requests.get(url) 
     return render_template('index.html')
 
 @app.route('/car_right')
-def car_forward():
+def car_right():
     url = 'http://192.168.1.107/right'
     x = requests.get(url) 
     return render_template('index.html')
