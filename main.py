@@ -94,7 +94,7 @@ def car_forward():
         x = requests.get(url) 
         return render_template('index.html')
     except:
-        pass
+        return render_template('index.html')
 
 @app.route('/car_backward')
 def car_backward():
@@ -103,7 +103,7 @@ def car_backward():
         x = requests.get(url) 
         return render_template('index.html')
     except:
-        pass
+        return render_template('index.html')
 
 @app.route('/car_stop')
 def car_stop():
@@ -112,7 +112,7 @@ def car_stop():
         x = requests.get(url) 
         return render_template('index.html')
     except:
-        pass
+        return render_template('index.html')
 
 @app.route('/car_left')
 def car_left():
@@ -121,7 +121,7 @@ def car_left():
         x = requests.get(url) 
         return render_template('index.html')
     except:
-        pass
+        return render_template('index.html')
 
 @app.route('/car_right')
 def car_right():
@@ -130,7 +130,7 @@ def car_right():
         x = requests.get(url) 
         return render_template('index.html')
     except:
-        pass
+        return render_template('index.html')
 
 if __name__ == '__main__':
 
