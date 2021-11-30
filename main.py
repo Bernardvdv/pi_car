@@ -12,6 +12,8 @@ import os
 import colorsys
 import math
 
+import requests
+
 import pantilthat
 from sys import exit
 
@@ -83,6 +85,12 @@ def off():
     pantilthat.light_type(pantilthat.GRBW)
     pantilthat.clear()
     pantilthat.show()
+    return render_template('index.html')
+
+@app.route('/car_forward')
+def car_forward():
+    url = 'http://192.168.1.107/forward'
+    x = requests.get(url) 
     return render_template('index.html')
 
 if __name__ == '__main__':
