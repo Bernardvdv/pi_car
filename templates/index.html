@@ -40,11 +40,11 @@
                  <div class="row d-flex justify-content-center">
                      <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
                           <div class="btn-group btn-group-lg" role="group" aria-label="First group">
-                            <a class="btn btn-primary" href="{{ url_for('car_forward') }}" role="button">Forwards</a>
-                            <a class="btn btn-primary" href="{{ url_for('car_backward') }}" role="button">Backwards</a>
-                            <a class="btn btn-primary" href="{{ url_for('car_left') }}" role="button">Left</a>
-                            <a class="btn btn-primary" href="{{ url_for('car_right') }}" role="button">Right</a>    
-                            <a class="btn btn-primary" href="{{ url_for('car_stop') }}" role="button">Stop</a> 
+                            <a class="btn btn-primary led" data-action="car_forward" role="button">Forwards</a>
+                            <a class="btn btn-primary led" data-action="car_backward" role="button">Backwards</a>
+                            <a class="btn btn-primary led" data-action="car_left" role="button">Left</a>
+                            <a class="btn btn-primary led" data-action="car_right" role="button">Right</a>    
+                            <a class="btn btn-primary led" data-action="car_stop" role="button">Stop</a> 
                           </div>
                     </div>
                  </div>
@@ -148,6 +148,21 @@
           });
         });
         </script>
+            
+<!--         <script>
+        $(function() {
+          $('.car').on('click', function(e) {
+             var action = $(this).data('action');
+             $.ajax({
+               type: "GET",
+               url: "/" + action,
+               success: function (data) {
+                   console.log(data);
+               }
+            });
+          });
+        });
+        </script> -->
             
     </body>
 </html>
