@@ -94,7 +94,7 @@ def car_forward():
     return render_template('index.html')
 
 @app.route('/car_backward')
-def car_forward():
+def car_backward():
     url = 'http://192.168.1.107/backward'
     x = requests.get(url) 
     return render_template('index.html')
