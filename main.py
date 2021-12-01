@@ -90,7 +90,7 @@ def off():
 @app.route('/car_forward')
 def car_forward():
     try:
-        url = 'http://192.168.1.107/forward'
+        url = 'http://192.168.1.107/on'
         x = requests.get(url) 
         return render_template('index.html')
     except:
@@ -99,7 +99,7 @@ def car_forward():
 @app.route('/car_backward')
 def car_backward():
     try:
-        url = 'http://192.168.1.107/backward'
+        url = 'http://192.168.1.107/back'
         x = requests.get(url) 
         return render_template('index.html')
     except:
