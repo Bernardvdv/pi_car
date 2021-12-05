@@ -30,26 +30,23 @@ def index():
 
 @app.route('/forward')
 def forward():
-    while True:
-        GPIO.output(Forward, GPIO.HIGH)
-        GPIO.output(Backward, GPIO.LOW)
-        print("Moving Forward")
+    GPIO.output(Forward, GPIO.HIGH)
+    GPIO.output(Backward, GPIO.LOW)
+    print("Moving Forward")
     return "Moving Forward", 200
 
 @app.route('/backward')
 def backward():
-    while True:
-        GPIO.output(Forward, GPIO.LOW)
-        GPIO.output(Backward, GPIO.HIGH)
-        print("Moving Backward")
+    GPIO.output(Forward, GPIO.LOW)
+    GPIO.output(Backward, GPIO.HIGH)
+    print("Moving Backward")
     return "Moving Backward", 200
 
 @app.route('/stop')
 def backward():
-    while True:
-        GPIO.output(Forward, GPIO.LOW)
-        GPIO.output(Backward, GPIO.LOW)
-        print("Stop")
+    GPIO.output(Forward, GPIO.LOW)
+    GPIO.output(Backward, GPIO.LOW)
+    print("Stop")
     return "Stop", 200
 
 if __name__ == '__main__':
