@@ -4,19 +4,26 @@ import threading
 import os
 
 import requests
-import RPi.GPIO as gpio
+import sys
+import time
+import RPi.GPIO as GPIO
 
-in1 = 18
-in2 = 15
-en = 14
+# in1 = 18
+# in2 = 15
+# en = 14
+GPIO.setwarnings(False)
 
-gpio.setmode(gpio.BCM)
-gpio.setup(in1,gpio.OUT)
-gpio.setup(in2,gpio.OUT)
-gpio.setup(en,gpio.OUT)
-gpio.output(in1,gpio.LOW)
-gpio.output(in2,gpio.LOW)
-p=gpio.PWM(en,1000)
+Forward = 18
+Backward = 15
+Enable = 15
+
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(Forward, GPIO.OUT)
+GPIO.setup(Backward, GPIO.OUT)
+GPIO.setup(Enable, GPIO.OUT)
+
+p=GPIO.PWM(Enable, 1000)
 p.start(25)
 
 
@@ -29,9 +36,9 @@ def index():
 
 @app.route('/forward')
 def forward():
-    while(1):
-        gpio.output(in1,gpio.HIGH)
-        gpio.output(in2,gpio.LOW)
+    GPIO.output(Forward, GPIO.HIGH)
+    GPIO.output(Backward, GPIO.LOW)
+    print("Moving Forward")
 
     return "Yeah", 200
 
