@@ -30,6 +30,7 @@ def index():
 
 @app.route('/forward')
 def forward():
+    GPIO.cleanup()
     GPIO.output(Forward, GPIO.HIGH)
     GPIO.output(Backward, GPIO.LOW)
     print("Moving Forward")
@@ -37,6 +38,7 @@ def forward():
 
 @app.route('/backward')
 def backward():
+    GPIO.cleanup()
     GPIO.output(Forward, GPIO.LOW)
     GPIO.output(Backward, GPIO.HIGH)
     print("Moving Backward")
