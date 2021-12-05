@@ -43,7 +43,7 @@ def backward():
     return "Moving Backward", 200
 
 @app.route('/stop')
-def backward():
+def stop():
     GPIO.output(Forward, GPIO.LOW)
     GPIO.output(Backward, GPIO.LOW)
     print("Stop")
