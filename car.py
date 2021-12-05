@@ -10,8 +10,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    status_code = app.Response(status=201)
-    return status_code
+    return "Yeah", 200
 
 if __name__ == '__main__':
 
