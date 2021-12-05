@@ -27,4 +27,4 @@ def reverse(t):
     print("Moving Backward")
 
 while(1):
-    forward(3)
+    reverse(3)
