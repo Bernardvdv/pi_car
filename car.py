@@ -30,14 +30,11 @@ def index():
 @app.route('/forward')
 def forward():
     while(1):
-
-    x=input()
-    
-    if x=='r':
-        print("run")
-        if(temp1==1):
-            GPIO.output(in1,GPIO.HIGH)
-            GPIO.output(in2,GPIO.LOW)
+        if x=='r':
+            print("run")
+            if(temp1==1):
+                GPIO.output(in1,GPIO.HIGH)
+                GPIO.output(in2,GPIO.LOW)
             
     return "Yeah", 200
 
