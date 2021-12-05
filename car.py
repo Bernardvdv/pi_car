@@ -30,12 +30,10 @@ def index():
 @app.route('/forward')
 def forward():
     while(1):
-        if x=='r':
-            print("run")
-            if(temp1==1):
-                gpio.output(in1,gpio.HIGH)
-                gpio.output(in2,gpio.LOW)
-            
+        if(temp1==1):
+            gpio.output(in1,gpio.HIGH)
+            gpio.output(in2,gpio.LOW)
+
     return "Yeah", 200
 
 if __name__ == '__main__':
