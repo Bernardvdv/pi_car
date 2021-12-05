@@ -30,9 +30,8 @@ def index():
 @app.route('/forward')
 def forward():
     while(1):
-        if(temp1==1):
-            gpio.output(in1,gpio.HIGH)
-            gpio.output(in2,gpio.LOW)
+        gpio.output(in1,gpio.HIGH)
+        gpio.output(in2,gpio.LOW)
 
     return "Yeah", 200
 
