@@ -4,8 +4,8 @@ import RPi.GPIO as GPIO
 
 GPIO.setwarnings(False)
 
-Forward = 9
-Backward = 10
+Forward = 10
+Backward = 9
 Enable = 11
 
 GPIO.setmode(GPIO.BCM)
