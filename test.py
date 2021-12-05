@@ -22,11 +22,9 @@ def forward(t):
     print("Moving Forward")
 
 def reverse(t):
-        GPIO.output(Forward, GPIO.LOW)
+    GPIO.output(Forward, GPIO.LOW)
     GPIO.output(Backward, GPIO.HIGH)
-        print("Moving Backward")
+    print("Moving Backward")
 
 while(1):
-        forward(3)
-        # reverse(3)
-#         GPIO.cleanup()
+    forward(3)
