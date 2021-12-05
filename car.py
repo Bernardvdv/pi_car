@@ -10,13 +10,13 @@ in1 = 15
 in2 = 18
 en = 14
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(in1,GPIO.OUT)
-GPIO.setup(in2,GPIO.OUT)
-GPIO.setup(en,GPIO.OUT)
-GPIO.output(in1,GPIO.LOW)
-GPIO.output(in2,GPIO.LOW)
-p=GPIO.PWM(en,1000)
+gpio.setmode(GPIO.BCM)
+gpio.setup(in1,GPIO.OUT)
+gpio.setup(in2,GPIO.OUT)
+gpio.setup(en,GPIO.OUT)
+gpio.output(in1,GPIO.LOW)
+gpio.output(in2,GPIO.LOW)
+p=gpio.PWM(en,1000)
 p.start(25)
 
 
@@ -33,8 +33,8 @@ def forward():
         if x=='r':
             print("run")
             if(temp1==1):
-                GPIO.output(in1,GPIO.HIGH)
-                GPIO.output(in2,GPIO.LOW)
+                gpio.output(in1,gpio.HIGH)
+                gpio.output(in2,gpio.LOW)
             
     return "Yeah", 200
 
