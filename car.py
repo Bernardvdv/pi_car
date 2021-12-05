@@ -8,15 +8,11 @@ import sys
 import time
 import RPi.GPIO as GPIO
 
-# in1 = 18
-# in2 = 15
-# en = 14
 GPIO.setwarnings(False)
 
-Forward = 18
-Backward = 15
-Enable = 14
-
+Forward = 10
+Backward = 9
+Enable = 11
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(Forward, GPIO.OUT)
@@ -25,8 +21,6 @@ GPIO.setup(Enable, GPIO.OUT)
 
 p=GPIO.PWM(Enable, 1000)
 p.start(25)
-
-
 
 app = Flask(__name__)
 
@@ -40,8 +34,23 @@ def forward():
         GPIO.output(Forward, GPIO.HIGH)
         GPIO.output(Backward, GPIO.LOW)
         print("Moving Forward")
+    return "Moving Forward", 200
 
-    return "Yeah", 200
+@app.route('/backward')
+def backward():
+    while True:
+        GPIO.output(Forward, GPIO.LOW)
+        GPIO.output(Backward, GPIO.HIGH)
+        print("Moving Backward")
+    return "Moving Backward", 200
+
+@app.route('/stop')
+def backward():
+    while True:
+        GPIO.output(Forward, GPIO.LOW)
+        GPIO.output(Backward, GPIO.LOW)
+        print("Stop")
+    return "Stop", 200
 
 if __name__ == '__main__':
 
