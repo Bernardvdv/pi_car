@@ -13,8 +13,8 @@ import RPi.GPIO as GPIO
 # en = 14
 GPIO.setwarnings(False)
 
-Forward = 15
-Backward = 18
+Forward = 18
+Backward = 15
 Enable = 14
 
 
