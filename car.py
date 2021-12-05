@@ -6,8 +6,8 @@ import os
 import requests
 import RPi.GPIO as gpio
 
-in1 = 15
-in2 = 18
+in1 = 18
+in2 = 15
 en = 14
 
 gpio.setmode(gpio.BCM)
